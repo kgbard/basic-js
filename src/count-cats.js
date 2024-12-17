@@ -1,24 +1,14 @@
-const { NotImplementedError } = require('../extensions/index.js');
+function countCats(matrix) {
+    // Check if matrix is valid and is an array of arrays
+    if (!matrix || !Array.isArray(matrix) || matrix.length === 0) return 0;
 
-/**
- * Given matrix where you have to find cats by ears "^^"
- *
- * @param {Array<Array>} matrix 
- * @return {Number} count of cats found
- *
- * @example
- * countCats([
- *  [0, 1, '^^'],
- *  [0, '^^', 2],
- *  ['^^', 1, 2]
- * ]) => 3`
- *
- */
-function countCats(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+    // Count cats by finding "^^" in the matrix
+    return matrix.reduce((total, row) => {
+        // Ensure row is an array and count "^^" occurrences
+        return total + (Array.isArray(row) ? row.filter(item => item === '^^').length : 0);
+    }, 0);
 }
 
 module.exports = {
-  countCats
+    countCats
 };
